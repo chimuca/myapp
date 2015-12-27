@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fg_move"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/btn_add_friends_group_selector"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:paddingBottom="8.0dip"
+    android:paddingLeft="10.0dip"
+    android:paddingRight="10.0dip"
+    android:paddingTop="8.0dip" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/friends_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginLeft="10dip"
+            android:layout_toRightOf="@id/group_delete"
+            android:singleLine="true"
+            android:text="未分组"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18" />
+
+        <RadioButton
+            android:id="@+id/check_box"
+            android:layout_width="25dip"
+            android:layout_height="25dip"
+            android:layout_alignParentRight="true"
+            android:button="@null" />
+    </RelativeLayout>
+
+</LinearLayout>

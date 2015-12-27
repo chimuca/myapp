@@ -1,0 +1,369 @@
+package com.weishe.weichat.core.bean;
+option optimize_for = SPEED;
+enum MessageType {  
+    /**
+	 * 服务器登入
+	 */
+	SERVER_LOGIN=0; 
+	/**
+	 * 客户端登入
+	 */
+	CLIENT_LOGIN=2;
+	/**
+	 * 服务器发出的ping
+	 */
+	SERVER_PING=3;
+	/**
+	 * 客户端发出的ping
+	 */
+	CLIENT_PING=4;
+	/**
+	 * 服务器发出的pong
+	 */
+	SERVER_PONG=5;
+	/**
+	 * 客户端发出的pong
+	 */
+	CLIENT_PONG=6;
+	/**
+	 * 服务端错误异常
+	 */
+	SERVER_ERROR=7;
+	/**
+	 * 登录成功
+	 */
+	LOGIN_SUCCESS=8;
+	/**
+	 * 登录失败
+	 */
+	LOGIN_ERROR=9;
+	/**
+	 * 收到的消息
+	 */
+	CHAT_MESSAGE=10;
+ 
+	/**
+	 *认证失败，一般需要重新登录
+	 */
+	AUTH_ERROR=11; 
+	/**
+	 *json格式的数据
+	 */
+	JSON_DATA=12;
+	
+	/**
+	 *客户端请求
+	 */
+	 CLIENT_REQUEST=13;
+	 
+	 /**
+	  *好友状态变化
+	  */
+	  FRIENDS_ONLINE_STATUS_CHANGED=14;
+	  /**
+	  *用户在线状态变化
+	  */
+	  USER_ONLINE_STATUS_CHANGED=15;
+	 /**
+	  *刷新数据消息通知
+	  */ 
+	  REFRESH_DATA=16;
+	  /**
+	   *待办消息
+	   */
+	   TODO=17;
+	  /**
+	   *好友列表
+	   */ 
+	  FRIENDS_LIST=18;
+	  /**
+	   *好友分组列表
+	   */ 
+	  FRIENDS_GROUP_LIST=19; 
+	  
+	  /**
+	   *群列表
+	   */
+	   CHAT_GROUP_LIST=20;
+	  /**
+	   *群列表
+	   */
+	   DISCUSSION_GROUP_LIST=21;
+	  /**
+	   *聊天记录
+	   */ 
+	   CHAT_MESSAGE_LIST=22;
+	   /**
+	   *待办消息列表
+	   */
+	   TODO_MESSAGE_LIST=23;
+	   
+	   /**
+	    *文件消息
+	    */
+	   FIEL=24;
+	   /**
+	    *用户列表
+	    **/
+	   USER_LIST=25;
+	   /**
+	    *用户
+	    */
+	   USER=26;
+	   /**
+	    *群成员
+	    */ 
+	   CHAT_GROUP_MEMBER=27;
+	   /**
+	    *讨论组成员
+	    */
+	   DISCUSSION_GROUP_MEMBER=28;
+	  /**
+	   *消息回执
+	   */   
+	   RECEIPT=29; 
+}
+
+ 
+/**
+ *聊天消息
+ */
+message ChatMessage{
+  required string token=1;//用户认证token
+  required uint32 fromId=2;//发送者ID
+  optional uint32 toId=3;//消息接收这ID
+  required string content=4;//具体的文字消息
+  required bool transfer=5;//是否需要转发
+  required uint32 msgType=6;//分为人人消息， 群消息，讨论组消息 
+  optional uint32 chatGroupId=7;//群ID
+  optional uint32 discussionGroupId=8;//讨论组id
+  required string date=9; //时间
+  required uint32 chatMessageId=10;//服务端id
+  required uint32 contentType=11;//消息类型
+  optional string fileGroupName=12; //附件所属组
+  optional string filePath=13; //附件地址
+  required string uuid=14;//唯一标识
+  required uint32 status=15;//消息阅读状态
+  }
+ /**
+  *消息回执
+  */
+message  ReceiptMessage{
+  required string uuid=1;//聊天消息的唯一标识
+  required uint32 status=2;//消息回执状态，已发送，已收到，已阅读
+  optional uint32 userId=3;//用户id,当用户向服务器发送的时候需要
+  optional string token=4;//授权认证字符串,当用户向服务器发送的时候需要
+}
+  
+/**
+ *心跳消息
+ */  
+message PingMessage{
+  required MessageType messageType = 1;//消息类型
+  required string clientId=2;//如果消息类型是服务器端消息则为ip:port,如果为客户端则为用户id+token
+}
+message ResultMessage{
+  required MessageType messageType = 1;//消息类型
+  required string message=2;// 具体消息
+}
+message ClientLoginMessage{
+  required string token=1;//授权认证字符串
+  required uint32 userId=2;//用户id
+}
+
+message ServerLoginMessage{
+  required string ip=1;
+  required uint32 port=2;
+}
+
+message JsonMessage{
+	required uint32 jsonMessageType = 1;//消息类型
+	required string jsonStr=2;//json字符串
+	optional uint32 userId=3;//当该消息向服务端发送的时候需要该字段
+}
+
+/**
+ *客户单请求
+ */
+message ClientRequestMessage{
+	required uint32 userId=1;//用户id
+	required string token=2;//授权认证字符串
+	required uint32 requestType=3;//请求类型
+	optional string parameter=4;//请求参数
+}
+/**
+ *好友状态改变
+ */
+message FriendsOnlineStatusChangeMessage{
+	required uint32 friendsId=1;//好友id
+	required uint32 onlineStatus=2;//好友状态
+}
+
+/**
+ *用户在线状态变化
+ */
+message UserOnlineStatusChangeMessage{
+	required uint32 userId=1;//用户id
+	required string token=2;//授权认证字符串
+	required uint32 onlineStatus=3;//在线状态
+}
+
+/**
+ *刷新用户数据通知
+ */
+ message RefreshDataMessage{
+ 	required uint32 dataType=1;//数据类型
+ }
+ 
+ /**
+  *好友申请，添加好友，入群申请
+  */
+ message TodoMessage{
+   required uint32 todoId=1;//待办消息id
+   required string todoSubject=2;//待办主题
+   required string requestMsg=3;//附加消息
+   required uint32 type=4;//待办消息类型 1=添加好友申请 2=别人申请加群请求
+ }
+ 
+ /**
+  *好友添加申请
+  */  
+ message AddFriendsRequestMessage{
+    required uint32 fromId=1;//发出请求的用户id
+    required string name=2;//用户昵称
+    optional string avatarPath=3;//用户头像地址
+    optional string message=4;//附加消息
+ } 
+ 
+/**
+ *好友信息
+ */ 
+message Friends{
+	required uint32 id=1;//朋友id
+	required uint32 userId=2;//好友对应的用户id
+	required string name=3;//好友昵称
+	optional string remarkName=4;//好友备注
+	required bool online=5;//在线状态
+	required uint32 onlineType=6;//在线类型
+	required string avatarPath=7;//头像地址
+	required string signature=8;//个人签名
+	optional uint32 gender=9;//性别
+	optional uint32 age=10;//年龄
+	required uint32 friendsGroupId=11;//好友对好友组id
+}
+
+/**
+ *好友分组
+ */
+message FriendsGroup{
+	required uint32 id=1;//分组id
+	required string name=2;//分组名称
+	required uint32 position=3;//分组所在位置
+}
+/**
+ *群组
+ */
+ message ChatGroup{
+ 	required uint32 id=1; //群id
+ 	required string name=2;//群名称
+ 	required string slogan=3;//群口号
+ }
+  /**
+ *讨论组成员
+ */ 
+ message ChatGroupMember{
+ 	required uint32 id=1; //成员id
+ 	required string rematkName=2;//群成员名称
+ 	required uint32 shield=3;//是否频闭消息
+ 	required uint32 userId=4;//群组成员Id
+ }
+/**
+ *讨论组
+ */
+ message DiscussionGroup{
+ 	required uint32 id=1; //群id
+ 	required string name=2;//群名称
+ }
+ /**
+ *讨论组成员
+ */ 
+ message DiscussionGroupMember{
+ 	required uint32 id=1; //成员id
+ 	required string rematkName=2;//讨论组成员名称
+ 	required uint32 shield=3;//是否频闭消息
+ 	required uint32 userId=4;//讨论组成员Id
+ }
+/**
+*文件下载
+*/
+message FileDownload{
+	required uint32 fileId=1; //文件在数据库中的id 
+	required string name=2;//文件名称
+	required string groupName=3;//对应在FastDFS上的group
+	required string path=4;//文件路径
+	required uint32 type=5;//文件类型
+	required uint64 size=6;//文件大小
+}
+
+/**
+ *文件上传
+ */
+message FileUpload{
+	required uint32 userId=1;//用户id
+	required string token=2;//授权认证字符串 
+	required string name=3;//文件名称
+	required string groupName=4;//对应在FastDFS上的group
+	required string path=5;//文件路径
+	required uint32 type=6;//文件类型
+	required uint64 size=7;//文件大小
+}
+
+/**
+ *
+ *用户
+ */
+ message User{
+ 	required uint32 id=1;//用户id
+ 	required string account=2;//账户
+ 	required string name=3;//昵称
+ 	required string avatarPath=4;//头像地址
+ 	required string birthday=5;//生日
+ 	required string signature=6;//个性签名
+ 	required uint32 gender=7;//性别
+ }
+
+/**
+ *聊天协议
+ */
+message Message{
+  required MessageType messageType = 1;//消息类型
+  optional ChatMessage chatMessage=2;//聊天消息
+  optional PingMessage pingMessage=3;//心跳消息
+  optional ClientLoginMessage clientLoginMessage=4;//客户端登录消息
+  optional ServerLoginMessage serverLoginMessage=5;//服务端登录消息
+  optional ResultMessage resultMessage=6;//结果消息 
+  optional JsonMessage jsonMessage=7;//json数据格式，用json处理比较难包装的数据对象
+  optional ClientRequestMessage clientRequestMessage=8;//客户端请求
+  optional FriendsOnlineStatusChangeMessage friendsOnlineStatusChangeMessage=9;//好友状态改变消息
+  optional UserOnlineStatusChangeMessage userOnlineStatusChangeMessage=10;//好友状态改变消息
+  optional RefreshDataMessage refreshDataMessage=11;//刷新用户数据
+  optional AddFriendsRequestMessage addFriendsRequestMessage=12;//添加好友消息
+  optional TodoMessage todoMessage=13;//待办消息
+  repeated Friends friendsListMessage=14;//好友列表
+  repeated ChatGroup chatGroupListMessage=15;//群列表
+  repeated DiscussionGroup discussionGroupListMessage=16;//讨论组列表
+  repeated FriendsGroup friendsGroupListMessage=17;//好友组列表
+  repeated ChatMessage ChatMessageListMessage=18;//聊天记录
+  repeated TodoMessage TodoListMessage=19;//代办列表
+  optional FileDownload fileDownload=20;//文件下载
+  optional FileUpload fileUpload=21;//文件上传
+  repeated FileDownload fileDownloadListMessage=22;//文件下载list
+  repeated FileUpload fileUploadListMessage=23;//文件上传list
+  optional User user=24;//用户
+  repeated User userListMessage=25;//用户列表
+  optional ChatGroupMember chatGroupMember=26;//群成员
+  repeated ChatGroupMember chatGroupMemberListMessage=27;//群成员列表
+  optional DiscussionGroupMember discussionGroupMember=28;//讨论组成员
+  repeated DiscussionGroupMember discussionGroupMemberListMessage=29;//讨论组成员列表
+  optional ReceiptMessage receiptMessage=30;//消息回执
+ }
