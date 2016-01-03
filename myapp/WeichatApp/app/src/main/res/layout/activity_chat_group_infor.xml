@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <org.weishe.weichat.view.CustomerScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dip" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                android:id="@+id/ll_dynamic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <!-- org.weishe.weichat.view.CircularImage -->
+
+                <org.weishe.weichat.view.CircularImage
+                    android:id="@+id/group_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="14dp"
+                    android:src="@drawable/grouphead_normal" />
+
+                <TextView
+                    android:id="@+id/chat_group_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_toRightOf="@id/group_photo"
+                    android:text="朋友群"
+                    android:textColor="@color/text_color_blue"
+                    android:textSize="@dimen/text_size_20" />
+
+                <TextView
+                    android:id="@+id/chat_group_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/chat_group_account"
+                    android:layout_alignParentBottom="true"
+                    android:text="胖虎"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_size_20" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_dynamic"
+                android:layout_margin="10dp"
+                android:background="@drawable/ll_bg_d"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" >
+
+                    <TextView
+                        android:id="@+id/qianbao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text="创建人："
+                        android:textSize="@dimen/text_size_18" />
+
+                    <TextView
+                        android:id="@+id/create_by"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:text="panghu"
+                        android:textSize="@dimen/text_size_16" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/devide_line" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" >
+
+                    <TextView
+                        android:id="@+id/group_class"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text="分类"
+                        android:textSize="@dimen/text_size_18" />
+
+                    <TextView
+                        android:id="@+id/group_class_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:textSize="@dimen/text_size_16" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/devide_line" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/slogan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Slogan："
+                        android:textSize="@dimen/text_size_18" />
+
+                    <TextView
+                        android:id="@+id/slogan_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toRightOf="@id/slogan"
+                        android:textSize="@dimen/text_size_16" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/two"
+                android:layout_margin="10dp"
+                android:background="@drawable/ll_bg_d" >
+
+                <TextView
+                    android:id="@+id/friends_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/chat_group_member" />
+
+                <ImageView
+                    android:id="@+id/open_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@id/friends_group"
+                    android:layout_marginRight="10dp"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/qvip_pay_wallet_icon_arrow_right_normal" />
+
+                <TextView
+                    android:id="@+id/group_member_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/friends_group"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/open_tag" />
+
+                <LinearLayout
+                    android:id="@+id/chat_group_member"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/friends_group"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/action_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/three"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </org.weishe.weichat.view.CustomerScrollView>
+
+</RelativeLayout>

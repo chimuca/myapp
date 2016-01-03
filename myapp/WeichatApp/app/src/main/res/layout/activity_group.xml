@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dslv="http://schemas.android.com/apk/res/org.weishe.weichat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <org.weishe.weichat.view.TitleBarView
+        android:id="@+id/group_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/add_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/group_title_bar"
+        android:background="@drawable/btn_add_friends_group_selector"
+        android:clickable="true"
+        android:paddingTop="1dip" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/add_friends_group"
+            android:textSize="@dimen/text_size_16" />
+
+        <ImageView
+            android:id="@+id/add_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/textView1"
+            android:src="@drawable/ic_input_add" />
+    </RelativeLayout>
+
+    <com.mobeta.android.dslv.DragSortListView
+        android:id="@+id/group_Listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/add_group"
+        android:layout_margin="3dp"
+        android:dividerHeight="1px"
+        dslv:collapsed_height="2dp"
+        dslv:drag_enabled="true"
+        dslv:drag_handle_id="@id/drag_handle"
+        dslv:drag_scroll_start="0.33"
+        dslv:drag_start_mode="onDown"
+        dslv:float_alpha="0.6"
+        dslv:max_drag_scroll_speed="0.5"
+        dslv:remove_enabled="true"
+        dslv:remove_mode="flingRemove"
+        dslv:slide_shuffle_speed="0.3"
+        dslv:sort_enabled="true"
+        dslv:track_drag_sort="false"
+        dslv:use_default_controller="true" />
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="6.0dip"
+    android:paddingTop="6.0dip"
+    tools:context=".activity.MainActivity" >
+
+    <org.weishe.weichat.view.CircularImage
+        android:id="@+id/user_photo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10.0dip"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@drawable/channel_qq" />
+
+    <TextView
+        android:id="@+id/friend_list_name"
+        android:layout_width="fill_parent"
+        android:layout_height="25.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="18.0dip"
+        android:layout_toRightOf="@id/user_photo"
+        android:ellipsize="end"
+        android:gravity="left|center"
+        android:includeFontPadding="false"
+        android:padding="0.0dip"
+        android:singleLine="true"
+        android:text="离落风清"
+        android:textSize="16.0sp" />
+
+    <TextView
+        android:id="@+id/friends_signature"
+        android:layout_width="fill_parent"
+        android:layout_height="25.0dip"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/friend_list_name"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="18.0dip"
+        android:layout_toRightOf="@id/user_photo"
+        android:ellipsize="end"
+        android:gravity="left|center"
+        android:includeFontPadding="false"
+        android:padding="0.0dip"
+        android:singleLine="true"
+        android:text="好好学习"
+        android:textColor="@color/gray"
+        android:textSize="12.0sp" />
+
+    <ImageView
+        android:id="@+id/cb_select"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="30.0dip"
+        android:background="@drawable/btn_radio_off"
+        android:gravity="center_vertical|center_horizontal" />
+
+</RelativeLayout>
