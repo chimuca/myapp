@@ -15,7 +15,7 @@ public class WeichatDaoGenerator {
         addChatMessage(schema);
         addTodo(schema);
         addAttachment(schema);
-        //weichat/app/src/main/java/gen 为生成java说存放的目录
+        //weichat/app/src/main/java/gen 为生成java所存放的目录
         new DaoGenerator().generateAll(schema, "../Weichat/app/src/main/java-gen");
     }
 
