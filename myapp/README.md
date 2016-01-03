@@ -14,7 +14,7 @@
 包含server和android client
 
 ##迁移说明
-开发环境由原来的eclipse环境分别迁移到了myeclipse和android studio
+开发工具由原来的eclipse环境分别迁移到了myeclipse和android studio
 并合并了原来分开的开源项目swip和mobeta
 
 ##服务端
