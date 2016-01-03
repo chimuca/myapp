@@ -10,11 +10,11 @@
     2）、可靠性、实时性、软硬件伸缩性高
     3）、业务接口易扩展，方便新业务的接入
 
-#本项目来源oschina，http://git.oschina.net/735859399/weichat
+#本项目来自于oschina，http://git.oschina.net/735859399/weichat
 包含server和android client
 
 ##迁移说明
-由原来的eclipse环境分别迁移到了myeclipse和android studio
+开发环境由原来的eclipse环境分别迁移到了myeclipse和android studio
 并合并了原来分开的开源项目swip和mobeta
 
 ##服务端
